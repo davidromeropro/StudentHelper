@@ -62,8 +62,8 @@
               	  <h5 class="centered">MOVILES</h5>
               	  	
                   <li class="mt">
-                      <a href="materia.jsp">
-                          <i class="fa fa-dashboard"></i>
+                      <a class="active" href="materia.jsp">
+                          <i class="fa fa-book"></i>
                           <span>Materias</span>
                       </a>
                   </li>
@@ -90,13 +90,15 @@
                   </li>
 
                     <li class="mt">
-                      <a class="active" href="perfil.jsp">
+                      <a class="sub" href="perfil.jsp">
                           <i class="fa fa-users"></i>
                           <span>Perfil</span>
                       </a>
                   </li>
 
               </ul>
+              
+              
               <!-- sidebar menu end-->
           </div>
       </aside>
@@ -118,8 +120,8 @@
                               <tr>
                                   <th>#</th>
                                   <th><i class="fa fa-folder-open"></i> Nombre</th>
-                                  <th class="hidden-phone"><i class="fa fa-envelope-o"></i> Profesor</th>
-                                  <th><i class=" fa fa-phone"></i> Aula</th>
+                                  <th class="hidden-phone"><i class="fa fa-suitcase"></i> Profesor</th>
+                                  <th><i class=" fa fa-bank"></i> Aula</th>
                                   <th></th>
                               </tr>
                               </thead>
@@ -130,40 +132,37 @@
                                   <td class="hidden-phone">Descripcion</td>
                                   <td class="hidden-phone">9999-9999</td>
                                   <td>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
+                                      <button class="btn btn-primary btn-xs" data-toggle="modal" href="materia.jsp#editarMaterias"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs" data-toggle="modal" href="materia.jsp#eliminarMaterias"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               </tbody>
                           </table>
                           <div class=" add-task-row">
-                                  <a class="btn btn-success btn-sm pull-left" data-toggle="modal" href="index.jsp#agregarPersonas">Agregar Personas</a>
+                                  <a href="materia.jsp#agregarMaterias" class="btn btn-success btn-sm pull-left" data-toggle="modal">Agregar Materias</a>
                           </div>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->
 
 
-              <!-- Modal - Signup -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="agregarPersonas" class="modal fade">
+              <!-- Modal - Agregar materias -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="agregarMaterias" class="modal fade">
 		              <div class="modal-dialog">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h2 class="modal-title">Agregar Personas</h2>
+		                          <h2 class="modal-title">Agregar Materias</h2>
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Ingresar datos</p>
 		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="name" placeholder="Username" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="email" placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="pssw" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="confirm" placeholder="Confirmar su password" autocomplete="off" class="form-control placeholder-no-fix">
-		
+                                  <input type="text" name="name" placeholder="Profesor" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="email" placeholder="Aula" autocomplete="off" class="form-control placeholder-no-fix">		
 		                      </div>  
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="index.jsp" type="submit">Agregar</button>
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Agregar</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>
@@ -171,8 +170,53 @@
 		              </div>
 		          </div>
 		          <!-- modal -->
-          		</div>
-          	</div>
+		          
+		          <!-- Modal - Editar materias -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editarMaterias" class="modal fade">
+		              <div class="modal-dialog">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h2 class="modal-title">Editar Materia</h2>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Editar datos</p>
+		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="name" placeholder="Profesor" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="email" placeholder="Aula" autocomplete="off" class="form-control placeholder-no-fix">
+		                      </div>  
+                              
+		                      <div class="modal-footer">
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Guardar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          
+		                      </div>
+		                  </div>
+		              </div>
+		          </div>
+		          <!-- modal -->
+		          
+		          <!-- Modal - Eliminar materias -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="eliminarMaterias" class="modal fade">
+		              <div class="modal-dialog">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h2 class="modal-title">Eliminar Materia</h2>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Seguro que desea eliminar la materia?</p>
+		                      </div>  
+                              
+		                      <div class="modal-footer">
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Aceptar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          
+		                      </div>
+		                  </div>
+		              </div>
+		          </div>
+		          <!-- modal -->
 			
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
@@ -181,8 +225,8 @@
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2015 - SOFTWARS
-              <a href="personas.jsp#" class="go-top">
+              2015 - MÓVILES
+              <a href="materia.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
