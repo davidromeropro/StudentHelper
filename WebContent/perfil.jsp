@@ -149,6 +149,12 @@
                               </div>
                           </div>
                           
+                          <div>
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Guardar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          
+		                  </div>
+                          
                       </form>
                   </div>
           		</div><!-- col-lg-9-->      	
@@ -164,8 +170,8 @@
                       <!-- Usuario -->
                       <div class="desc">		
                       	<div class="details">
+                      	<h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
                       		<p><a>VANESSA ALMENDARIZ</a><br/>
-                      		   <muted>Available</muted>
                       		</p>
                       	</div>
                       </div>
