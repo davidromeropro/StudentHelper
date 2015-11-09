@@ -9,7 +9,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>SOFTWARS - Prototipo - Tareas</title>
+    <title>Student Helper</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -20,104 +20,29 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/to-do.css">
+    <link href="assets\css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    
+    
 </head>
 <body>
 <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
-     <!--header start-->
+           <!--header start-->
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.jsp" class="logo"><b>NOMBRE DEL PROYECTO</b></a>
+            <a class="logo"><b>Student Helper</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
-                            <i class="fa fa-tasks"></i>
-                            <span class="badge bg-theme">4</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">Tienes 4 tareas pendientes</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Tarea 1</div>
-                                        <div class="percent">40%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Tarea 2</div>
-                                        <div class="percent">60%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Tarea 3</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Tarea 4</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="tareas.jsp#">Ver todas las tareas</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-
-                <!--  notification end -->
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
 
-                    <li><a class="logout" href="home.jsp">Logout</a></li>
-            	</ul>
-
-            	<ul class="nav pull-right top-menu">
-
-                    <li><a class="logout" href="home.jsp"><i class="fa fa-home"></i>HOME</a></li>
+                    <li><a class="logout" href="principal.jsp">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -133,44 +58,47 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><img src="assets/img/SOFTWARS-logo.png" class="img-square" width="100"></a></p>
-              	  <h5 class="centered">SOFTWARS</h5>
+              	  <h5 class="centered">MOVILES</h5>
               	  	
                   <li class="mt">
-                      <a href="index.jsp">
-                          <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
+                      <a class="sub" href="materia.jsp">
+                          <i class="fa fa-book"></i>
+                          <span>Materias</span>
                       </a>
                   </li>
                   
                   <li class="mt">
-                      <a class="sub" href="calendar.jsp">
+                      <a class="sub" href="horario.jsp">
                           <i class="fa fa-calendar"></i>
-                          <span>Calendario</span>
+                          <span>Horarios</span>
                       </a>
                   </li>
 
                   <li class="mt">
-                      <a class="active" href="tareas.jsp">
+                      <a class="active" href="tarea.jsp">
                           <i class="fa fa-check-square"></i>
                           <span>Tareas</span>
                       </a>
                   </li>
 
                     <li class="mt">
-                      <a class="sub" href="notas.jsp">
+                      <a class="sub" href="examen.jsp">
                           <i class="fa fa-pencil-square-o"></i>
-                          <span>Notas</span>
+                          <span>Exámenes</span>
                       </a>
                   </li>
 
                     <li class="mt">
-                      <a class="sub" href="personas.jsp">
+                      <a class="sub" href="perfil.jsp">
                           <i class="fa fa-users"></i>
-                          <span>Personas</span>
+                          <span>Perfil</span>
                       </a>
                   </li>
 
-
+              </ul>
+              
+              
+              <!-- sidebar menu end-->
           </div>
       </aside>
       <!--sidebar end-->
@@ -182,10 +110,8 @@
       <section id="main-content">
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> Tareas</h3>
-          	
-          
-			
-          	<!-- SORTABLE TO DO LIST -->
+
+			<!-- SORTABLE TO DO LIST -->
 			
               <div class="row mt mb">
                   <div class="col-md-12">
@@ -205,95 +131,130 @@
                                           <div class="task-title">
                                               <span class="task-title-sp">Presentar proyecto</span>
                                               <span class="badge bg-theme">Done</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                              <div class="pull-right hidden-large">
+                                                  <button class="btn btn-primary btn-xs fa fa-pencil" data-toggle="modal" href="tarea.jsp#editarTarea"></button>
+                                                  <button class="btn btn-danger btn-xs fa fa-trash-o" data-toggle="modal" href="tarea.jsp#eliminarTarea"></button>
                                               </div>
                                           </div>
                                       </li>
-
-                                      <li class="list-danger">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Extensive collection of plugins</span>
-                                              <span class="badge bg-warning">Cool</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-success">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Free updates always, no extra fees.</span>
-                                              <span class="badge bg-success">2 Days</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-warning">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">More features coming soon</span>
-                                              <span class="badge bg-info">Tomorrow</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                                      <li class="list-info">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Hey, seriously, you should buy this Dashboard</span>
-                                              <span class="badge bg-important">Now</span>
-                                              <div class="pull-right hidden-phone">
-                                                  <button class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-
-                                  </ul>
                               </div>
                               <div class=" add-task-row">
-                                  <a class="btn btn-success btn-sm pull-left" href="tareas.jsp#">Crear Nuevas Tareas</a>
-                                  <a class="btn btn-default btn-sm pull-right" href="tareas.jsp#">Ver todas las tareas</a>
+                                  <a href="tarea.jsp#agregarTarea" class="btn btn-success btn-sm pull-left" data-toggle="modal">Agregar Nuevas Tareas</a>
                               </div>
                           </div>
                       </section>
                   </div><!--/col-md-12 -->
               </div><!-- /row -->
+
+			
+
+              <!-- Modal - Agregar tarea -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="agregarTarea" class="modal fade">
+		              <div class="modal-dialog">
+		              <form action="" method="post">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h2 class="modal-title">Agregar Tarea</h2>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Ingresar datos</p>
+		                          <div class="modal-body">
+		                          <input type="text" name="name" placeholder="Titulo" autocomplete="off" class="form-control placeholder-no-fix">
+		                          </div>
+		                          <div class="modal-body">
+		                          <div class="well">
+									  <div id="datetimepicker4" class="input-append">
+									    <input data-format="yyyy-MM-dd" type="text"></input>
+									    <span class="add-on">
+									      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+									      </i>
+									    </span>
+									  </div>
+									</div>
+		                          </div>		                          
+		                          <div class="modal-body">
+			                          <p>Descripción</p>
+	                                  <textarea class="form-control" rows="3" placeholder="Descripci"> </textarea>
+			                      </div>
+			                      
+                                  		
+		                      </div>
+		              </form>  
+                              
+		                      <div class="modal-footer">
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Agregar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          
+		                      </div>
+		                  </div>
+		              </div>
+		          </div>
+		          <!-- modal -->
+		          
+		          <!-- Modal - Editar tareas -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editarTarea" class="modal fade">
+		              <div class="modal-dialog">
+		              <form action="" method="post">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h2 class="modal-title">Editar Tarea</h2>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Editar datos</p>
+		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="name" placeholder="Profesor" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="email" placeholder="Aula" autocomplete="off" class="form-control placeholder-no-fix">
+		                      </div>  
+                              
+		                      <div class="modal-footer">
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Guardar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          
+		                      </div>
+		                  </div>
+		                  </form>
+		              </div>
+		          </div>
+		          <!-- modal -->
+		          
+		          <!-- Modal - Eliminar tareas -->
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="eliminarTarea" class="modal fade">
+		              <div class="modal-dialog">
+		              <form action="" method="post">
+		                  <div class="modal-content">
+		                      <div class="modal-header">
+		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                          <h2 class="modal-title">Eliminar Tarea</h2>
+		                      </div>
+		                      <div class="modal-body">
+		                          <p>Seguro que desea eliminar la tarea?</p>
+		                      </div>  
+                              
+		                      <div class="modal-footer">
+		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Aceptar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          
+		                      </div>
+		                  </div>
+		                  </form>
+		              </div>
+		          </div>
+		          <!-- modal -->
 			
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
-      <!--footer start-->
+          
+			
+          	
+       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2015 - SOFTWARS
-              <a href="tareas.jsp#" class="go-top">
+              2015 - MÓVILES
+              <a href="materia.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -315,17 +276,21 @@
     <!--script for this page-->
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
     <script src="assets/js/tasks.js" type="text/javascript"></script>
+    <script src="assets\js\bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 
     <script>
         jQuery(document).ready(function () {
             TaskList.initTaskWidget();
-        });
 
         $(function () {
             $("#sortable").sortable();
             $("#sortable").disableSelection();
+            $('#datetimepicker4').datetimepicker({
+                pickTime: false
+              });
         });
-
+        
+});
     </script>
     
     
