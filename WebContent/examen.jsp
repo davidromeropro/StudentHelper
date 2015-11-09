@@ -110,7 +110,7 @@
        <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> Materias</h3>
+          	<h3><i class="fa fa-angle-right"></i> Examen</h3>
           	<div class="row mt">
           		<div class="col-lg-12">
           		<div class="panel-body">
@@ -119,9 +119,9 @@
                               <thead>
                               <tr>
                                   <th>#</th>
-                                  <th><i class="fa fa-folder-open"></i> Nombre</th>
-                                  <th><i class="fa fa-suitcase"></i> Profesor</th>
-                                  <th><i class=" fa fa-bank"></i> Aula</th>
+                                  <th><i class="fa fa-folder-open"></i> Tema</th>
+                                  <th><i class="fa fa-suitcase"></i> Materia</th>
+                                  <th><i class=" fa fa-clock-o"></i> Fecha</th>
                                   <th></th>
                               </tr>
                               </thead>
@@ -132,14 +132,14 @@
                                   <td class="hidden-large">Descripcion</td>
                                   <td class="hidden-large">9999-9999</td>
                                   <td>
-                                      <button class="btn btn-primary btn-xs" data-toggle="modal" href="materia.jsp#editarMateria"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs" data-toggle="modal" href="materia.jsp#eliminarMateria"><i class="fa fa-ban"></i></button>
+                                      <button class="btn btn-primary btn-xs" data-toggle="modal" href="materia.jsp#editarExamen"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs" data-toggle="modal" href="materia.jsp#eliminarExamen"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               </tbody>
                           </table>
                           <div class=" add-task-row">
-                                  <a href="materia.jsp#agregarMateria" class="btn btn-success btn-sm pull-left" data-toggle="modal">Agregar Materia</a>
+                                  <a href="materia.jsp#agregarExamen" class="btn btn-success btn-sm pull-left" data-toggle="modal">Agregar Examen</a>
                           </div>
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
@@ -147,13 +147,13 @@
 
 
               <!-- Modal - Agregar materia -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="agregarMateria" class="modal fade">
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="agregarExamen" class="modal fade">
 		              <div class="modal-dialog">
 		                  <form action="" method="post">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h2 class="modal-title">Agregar Materia</h2>
+		                          <h2 class="modal-title">Agregar Examen</h2>
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Ingresar datos</p>
@@ -163,7 +163,7 @@
 		                      </div>  
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Agregar</button>
+		                          <button class="btn btn-theme" href="examen.jsp" type="submit">Agregar</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>
@@ -174,13 +174,13 @@
 		          <!-- modal -->
 		          
 		          <!-- Modal - Editar materia -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editarMateria" class="modal fade">
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="editarExamen" class="modal fade">
 		              <div class="modal-dialog">
 		              <form action="" method="post">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h2 class="modal-title">Editar Materia</h2>
+		                          <h2 class="modal-title">Editar Examen</h2>
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Editar datos</p>
@@ -190,7 +190,7 @@
 		                      </div>  
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Guardar</button>
+		                          <button class="btn btn-theme" href="examen.jsp" type="submit">Guardar</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>
@@ -201,20 +201,20 @@
 		          <!-- modal -->
 		          
 		          <!-- Modal - Eliminar materia -->
-		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="eliminarMateria" class="modal fade">
+		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="eliminarExamen" class="modal fade">
 		              <div class="modal-dialog">
 		              <form action="" method="post">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                          <h2 class="modal-title">Eliminar Materia</h2>
+		                          <h2 class="modal-title">Eliminar Examen</h2>
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Seguro que desea eliminar la materia?</p>
 		                      </div>  
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Aceptar</button>
+		                          <button class="btn btn-theme" href="examen.jsp" type="submit">Aceptar</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>

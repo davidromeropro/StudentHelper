@@ -24,7 +24,7 @@
     <link href="assets/css/datepicker.css" rel="stylesheet">
     
     <style>
-	.datepicker{z-index:1151 !important;}
+	.datepicker{z-index:1200 !important;}
 	</style>
     
 </head>
@@ -117,7 +117,7 @@
 
 			<!-- SORTABLE TO DO LIST -->
 			
-              <div class="row mt mb">
+              <div class="row mt">
                   <div class="col-md-12">
                       <section class="task-panel tasks-widget">
 	                	<div class="panel-heading">
@@ -126,9 +126,8 @@
 	                 	</div>
                           <div class="panel-body">
                               <div class="task-content">
-                                  <ul id="sortable" class="task-list">
-                                      <li class="list-primary">
-                                          <i class=" fa fa-ellipsis-v"></i>
+                                  <ul class="task-list">
+                                      <li>
                                           <div class="task-checkbox">
                                               <input type="checkbox" class="list-child" value=""  />
                                           </div>
@@ -210,8 +209,13 @@
 	      							</table>		
 			                      </div>
 		                      </div>
+		                      <div class="modal-footer">
+		                          <button class="btn btn-theme" href="tarea.jsp" type="submit">Guardar</button>
+                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                  	  </div>
 		                  </div>
 		                  </form>
+		                  
 		              </div>
 		          </div>
 		          <!-- modal -->
