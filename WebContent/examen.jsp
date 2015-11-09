@@ -232,7 +232,7 @@
       <footer class="site-footer">
           <div class="text-center">
               2015 - MÓVILES
-              <a href="materia.jsp#" class="go-top">
+              <a href="examen.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
