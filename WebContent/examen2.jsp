@@ -19,8 +19,6 @@
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     
-    <link href="assets/css/datepicker.css" rel="stylesheet">
-    
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -123,7 +121,7 @@
                                   <th>#</th>
                                   <th><i class="fa fa-folder-open"></i> Tema</th>
                                   <th><i class="fa fa-suitcase"></i> Materia</th>
-                                  <th><i class=" fa fa-clock-o"></i>Fecha<a href="#" class="btn btn-default btn-xs" id="dp4" data-date-format="yyyy-mm-dd" data-date="">Change</a></th>
+                                  <th><i class=" fa fa-clock-o"></i> Fecha</th>
                                   <th></th>
                               </tr>
                               </thead>
@@ -132,7 +130,7 @@
                                   <td>1</td>
                                   <td class="hidden-large">Nombre</td>
                                   <td class="hidden-large">Descripcion</td>
-                                  <td id="startDate"></td>
+                                  <td class="hidden-large">9999-9999</td>
                                   <td>
                                       <button class="btn btn-primary btn-xs" data-toggle="modal" href="materia.jsp#editarExamen"><i class="fa fa-pencil"></i></button>
                                       <button class="btn btn-danger btn-xs" data-toggle="modal" href="materia.jsp#eliminarExamen"><i class="fa fa-ban"></i></button>
@@ -186,8 +184,9 @@
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Editar datos</p>
-		                          <input type="text" name="name" placeholder="Tema" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="name" placeholder="Materia" autocomplete="off" class="form-control placeholder-no-fix">
+		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="name" placeholder="Profesor" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="email" placeholder="Aula" autocomplete="off" class="form-control placeholder-no-fix">
 		                      </div>  
                               
 		                      <div class="modal-footer">
@@ -255,58 +254,14 @@
     <script src="assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
-    <script src="assets/js/jquery-1.9.1.min.js"></script>
-    <script src="assets/js/bootstrap-datepicker.js"></script>
     
   <script>
-	if (top.location != location) {
-    top.location.href = document.location.href ;
-  }
-		$(function(){
-			//$('select.styled').customSelect();
-			window.prettyPrint && prettyPrint();
+      //custom select box
 
-			
-			
-			var startDate = new Date();
-			var endDate = new Date();
-			$('#dp4').datepicker()
-				.on('changeDate', function(ev){
-					if (ev.date.valueOf() < endDate.valueOf()){
-						$('#alert').show().find('strong').text('The start date can not be greater then the end date');
-					} else {
-						$('#alert').hide();
-						startDate = new Date(ev.date);
-						$('#startDate').text($('#dp4').data('date'));
-					}
-					$('#dp4').datepicker('hide');
-				});
-			
-        // disabling dates
-        var nowTemp = new Date();
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+      $(function () {
+          $('select.styled').customSelect();
+      });
 
-        var checkin = $('#dpd1').datepicker({
-          onRender: function(date) {
-            return date.valueOf() < now.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          if (ev.date.valueOf() > checkout.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            checkout.setValue(newDate);
-          }
-          checkin.hide();
-          $('#dpd2')[0].focus();
-        }).data('datepicker');
-        var checkout = $('#dpd2').datepicker({
-          onRender: function(date) {
-            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          checkout.hide();
-        }).data('datepicker');
-		});
-	</script>
+  </script>
 </body>
 </html>
