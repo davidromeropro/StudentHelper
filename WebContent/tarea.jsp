@@ -20,8 +20,12 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/to-do.css">
-    <link href="assets\css\bootstrap-datetimepicker.min.css" rel="stylesheet" />
     
+    <link href="assets/css/datepicker.css" rel="stylesheet">
+    
+    <style>
+	.datepicker{z-index:1151 !important;}
+	</style>
     
 </head>
 <body>
@@ -159,26 +163,17 @@
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Ingresar datos</p>
-		                          <div class="modal-body">
-		                          <input type="text" name="name" placeholder="Titulo" autocomplete="off" class="form-control placeholder-no-fix">
-		                          </div>
-		                          <div class="modal-body">
-		                          <div class="well">
-									  <div id="datetimepicker4" class="input-append">
-									    <input data-format="yyyy-MM-dd" type="text"></input>
-									    <span class="add-on">
-									      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-									      </i>
-									    </span>
-									  </div>
-									</div>
-		                          </div>		                          
-		                          <div class="modal-body">
+		                          	<input type="text" name="name" placeholder="Titulo" autocomplete="off" class="form-control placeholder-no-fix">
+		                          <div>
+		                          <br>
 			                          <p>Descripción</p>
 	                                  <textarea class="form-control" rows="3" placeholder="Descripci"> </textarea>
 			                      </div>
-			                      
-                                  		
+			                      <div class="modal-body">
+			                        <table class="table">
+									     <th>Fecha de entrega: <input type="text" class="span2" value="" data-date-format="mm/dd/yy" id="dp2" ></th>
+	      							</table>		
+			                      </div>
 		                      </div>
 		              </form>  
                               
@@ -203,15 +198,17 @@
 		                      </div>
 		                      <div class="modal-body">
 		                          <p>Editar datos</p>
-		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="name" placeholder="Profesor" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="email" placeholder="Aula" autocomplete="off" class="form-control placeholder-no-fix">
-		                      </div>  
-                              
-		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Guardar</button>
-                                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
-		                          
+		                          	<input type="text" name="name" placeholder="Titulo" autocomplete="off" class="form-control placeholder-no-fix">
+		                          <div>
+		                          <br>
+			                          <p>Descripción</p>
+	                                  <textarea class="form-control" rows="3"> </textarea>
+			                      </div>
+			                      <div class="modal-body">
+			                        <table class="table">
+									     <th>Fecha de entrega: <input type="text" class="span2" value="" data-date-format="mm/dd/yy" id="dp2" ></th>
+	      							</table>		
+			                      </div>
 		                      </div>
 		                  </div>
 		                  </form>
@@ -233,7 +230,7 @@
 		                      </div>  
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="materia.jsp" type="submit">Aceptar</button>
+		                          <button class="btn btn-theme" href="tarea.jsp" type="submit">Aceptar</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>
@@ -254,7 +251,7 @@
       <footer class="site-footer">
           <div class="text-center">
               2015 - MÓVILES
-              <a href="materia.jsp#" class="go-top">
+              <a href="tarea.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -276,31 +273,80 @@
     <!--script for this page-->
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
     <script src="assets/js/tasks.js" type="text/javascript"></script>
-    <script src="assets\js\bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    
+	<script src="assets/js/jquery-1.9.1.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
 
-    <script>
-        jQuery(document).ready(function () {
-            TaskList.initTaskWidget();
-
-        $(function () {
-            $("#sortable").sortable();
-            $("#sortable").disableSelection();
-            $('#datetimepicker4').datetimepicker({
-                pickTime: false
-              });
-        });
-        
-});
-    </script>
     
     
   <script>
-      //custom select box
+	if (top.location != location) {
+    top.location.href = document.location.href ;
+  }
+		$(function(){
+			//$('select.styled').customSelect();
+			window.prettyPrint && prettyPrint();
+			$('#dp1').datepicker({
+				format: 'mm-dd-yyyy'
+			});
+			$('#dp2').datepicker();
+			$('#dp3').datepicker();
+			$('#dp3').datepicker();
+			$('#dpYears').datepicker();
+			$('#dpMonths').datepicker();
+			
+			
+			var startDate = new Date();
+			var endDate = new Date();
+			$('#dp4').datepicker()
+				.on('changeDate', function(ev){
+					console.log("ola ke ase");
+					if (ev.date.valueOf() > endDate.valueOf()){
+						$('#alert').show().find('strong').text('The start date can not be greater then the end date');
+					} else {
+						$('#alert').hide();
+						startDate = new Date(ev.date);
+						$('#startDate').text($('#dp4').data('date'));
+					}
+					$('#dp4').datepicker('hide');
+				});
+			$('#dp5').datepicker()
+				.on('changeDate', function(ev){
+					if (ev.date.valueOf() < startDate.valueOf()){
+						$('#alert').show().find('strong').text('The end date can not be less then the start date');
+					} else {
+						$('#alert').hide();
+						endDate = new Date(ev.date);
+						$('#endDate').text($('#dp5').data('date'));
+					}
+					$('#dp5').datepicker('hide');
+				});
 
-      $(function () {
-          $('select.styled').customSelect();
-      });
+        // disabling dates
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
-  </script>
+        var checkin = $('#dpd1').datepicker({
+          onRender: function(date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+          }
+        }).on('changeDate', function(ev) {
+          if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate() + 1);
+            checkout.setValue(newDate);
+          }
+          checkin.hide();
+          $('#dpd2')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#dpd2').datepicker({
+          onRender: function(date) {
+            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+          }
+        }).on('changeDate', function(ev) {
+          checkout.hide();
+        }).data('datepicker');
+		});
+	</script>
 </body>
 </html>

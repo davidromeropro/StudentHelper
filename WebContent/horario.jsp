@@ -114,20 +114,18 @@
           	<div class="row mt">
           	
           	<div class="well">
-			<div class="alert alert-error" id="alert">
-				<strong>Oh snap!</strong>
-			  </div>
+			
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Start date<a href="#" class="btn small" id="dp4" data-date-format="yyyy-mm-dd" data-date="2012-02-20">Change</a></th>
-						<th>End date<a href="#" class="btn small" id="dp5" data-date-format="yyyy-mm-dd" data-date="2012-02-25">Change</a></th>
+						<th>Start date<a href="#" class="btn small" id="dp4" data-date-format="yyyy-mm-dd" data-date="">Change</a></th>
+						<th>End date<a href="#" class="btn small" id="dp5" data-date-format="yyyy-mm-dd" data-date="">Change</a></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td id="startDate">2012-02-20</td>
-						<td id="endDate">2012-02-25</td>
+						<td id="startDate"></td>
+						<td id="endDate"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -210,6 +208,7 @@
 			//$('select.styled').customSelect();
 			window.prettyPrint && prettyPrint();
 			$('#dp1').datepicker({
+				defaultDate: new Date(),
 				format: 'mm-dd-yyyy'
 			});
 			$('#dp2').datepicker();
@@ -219,8 +218,8 @@
 			$('#dpMonths').datepicker();
 			
 			
-			var startDate = new Date(2012,1,20);
-			var endDate = new Date(2012,1,25);
+			var startDate = new Date();
+			var endDate = new Date();
 			$('#dp4').datepicker()
 				.on('changeDate', function(ev){
 					console.log("ola ke ase");
