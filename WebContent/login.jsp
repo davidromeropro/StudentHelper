@@ -41,12 +41,12 @@
 		            <label class="checkbox">
                         
 		            </label>
-		            <button class="btn btn-theme btn-block" href="home.jsp" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+		            <button class="btn btn-theme btn-block" href="perfil.jsp" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 		            <hr>
 		      </form>
 		            <div class="registration">
 		                No tienes cuenta?<br/>
-		                <a data-toggle="modal" href="home.jsp#signUp">  Crear una cuenta</a>
+		                <a data-toggle="modal" href="login.jsp#signUp">  Crear una cuenta</a>
 		            </div>
 		
 		        </div>
@@ -66,14 +66,14 @@
 		                      
 		                          <p>Ingresar datos</p>
 		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="name" placeholder="Username" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="name" placeholder="Apellido" autocomplete="off" class="form-control placeholder-no-fix">
                                   <input type="email" name="email" placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix">
                                   <input type="password" name="pssw" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
 		                      </div>
 
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" type="submit">Crear Cuenta</button>
+		                          <button class="btn btn-theme" href="perfil.jsp" type="submit">Crear Cuenta</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>

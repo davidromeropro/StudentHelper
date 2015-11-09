@@ -24,7 +24,7 @@
     <link href="assets/css/datepicker.css" rel="stylesheet">
     
     <style>
-	.datepicker{z-index:1200 !important;}
+	.datepicker{z-index:10000 !important;}
 	</style>
     
 </head>
@@ -118,35 +118,38 @@
 			<!-- SORTABLE TO DO LIST -->
 			
               <div class="row mt">
-                  <div class="col-md-12">
-                      <section class="task-panel tasks-widget">
-	                	<div class="panel-heading">
-	                        <div class="pull-left"><h5><i class="fa fa-tasks"></i> Lista de tareas</h5></div>
-	                        <br>
-	                 	</div>
-                          <div class="panel-body">
-                              <div class="task-content">
-                                  <ul class="task-list">
-                                      <li>
-                                          <div class="task-checkbox">
-                                              <input type="checkbox" class="list-child" value=""  />
-                                          </div>
-                                          <div class="task-title">
-                                              <span class="task-title-sp">Presentar proyecto</span>
-                                              <span class="badge bg-theme">Done</span>
-                                              <div class="pull-right hidden-large">
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil" data-toggle="modal" href="tarea.jsp#editarTarea"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o" data-toggle="modal" href="tarea.jsp#eliminarTarea"></button>
-                                              </div>
-                                          </div>
-                                      </li>
-                              </div>
-                              <div class=" add-task-row">
-                                  <a href="tarea.jsp#agregarTarea" class="btn btn-success btn-sm pull-left" data-toggle="modal">Agregar Nuevas Tareas</a>
-                              </div>
+                  <div class="col-lg-12">
+          		<div class="panel-body">
+                          <table class="table table-striped table-advance table-hover">
+	                  	  	  <hr>
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th><i class="fa fa-folder-open"></i>Título</th>
+                                  <th><i class="fa fa-suitcase"></i> Descripción</th>
+                                  <th><i class=" fa fa-clock-o"></i>Fecha de entrega<a href="#" class="btn btn-default btn-xs" id="dp4" data-date-format="yyyy-mm-dd" data-date="">Change</a></th>
+                                  <th></th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td class="hidden-large">Nombre</td>
+                                  <td class="hidden-large">Descripcion</td>
+                                  <td id="startDate"></td>
+                                  <td>
+                                      <button class="btn btn-primary btn-xs" data-toggle="modal" href="tarea.jsp#editarTarea"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs" data-toggle="modal" href="tarea.jsp#eliminarTarea"><i class="fa fa-ban"></i></button>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                          <div class=" add-task-row">
+                                  <a href="tarea.jsp#agregarTarea" class="btn btn-success btn-sm pull-left" data-toggle="modal">Agregar Tarea</a>
                           </div>
-                      </section>
-                  </div><!--/col-md-12 -->
+                      </div><!-- /content-panel -->
+                  </div><!-- /col-md-12 -->
+
               </div><!-- /row -->
 
 			
@@ -202,11 +205,6 @@
 		                          <br>
 			                          <p>Descripción</p>
 	                                  <textarea class="form-control" rows="3"> </textarea>
-			                      </div>
-			                      <div class="modal-body">
-			                        <table class="table">
-									     <th>Fecha de entrega: <input type="text" class="span2" value="" data-date-format="mm/dd/yy" id="dp2" ></th>
-	      							</table>		
 			                      </div>
 		                      </div>
 		                      <div class="modal-footer">
@@ -305,7 +303,7 @@
 			$('#dp4').datepicker()
 				.on('changeDate', function(ev){
 					console.log("ola ke ase");
-					if (ev.date.valueOf() > endDate.valueOf()){
+					if (ev.date.valueOf() < endDate.valueOf()){
 						$('#alert').show().find('strong').text('The start date can not be greater then the end date');
 					} else {
 						$('#alert').hide();
