@@ -4,13 +4,13 @@ public class MateriaVO {
 	private String nombre;
 	private String profesor;
 	private String aula;
-	private String usuario;
+	private String usuarioEmail;
 	public MateriaVO() {
 		super();
 		this.nombre = "";
 		this.profesor = "";
 		this.aula = "";
-		this.usuario = "";
+		this.usuarioEmail = "";
 	}
 	public String getNombre() {
 		return nombre;
@@ -30,11 +30,10 @@ public class MateriaVO {
 	public void setAula(String aula) {
 		this.aula = aula;
 	}
-	public String getUsuario() {
-		return usuario;
+	public String getUsuarioEmail() {
+		return usuarioEmail;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuarioEmail(String usuarioEmail) {
+		this.usuarioEmail = usuarioEmail;
 	}
-	
 }

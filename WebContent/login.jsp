@@ -55,7 +55,7 @@
                   <!-- Modal - Signup -->
 		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="signUp" class="modal fade">
 		              <div class="modal-dialog">
-		               	<form action="./crearCuenta" method="post">
+		               	<form action="./perfil.jsp" method="post">
 		                  <div class="modal-content">
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -65,15 +65,15 @@
 		                      <div class="modal-body">
 		                      
 		                          <p>Ingresar datos</p>
-		                          <input type="text" name="name" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="text" name="name" placeholder="Apellido" autocomplete="off" class="form-control placeholder-no-fix">
+		                          <input type="text" name="nombre" placeholder="Nombre" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="apellido" placeholder="Apellido" autocomplete="off" class="form-control placeholder-no-fix">
                                   <input type="email" name="email" placeholder="Correo" autocomplete="off" class="form-control placeholder-no-fix">
-                                  <input type="password" name="pssw" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="password" name="password" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
 		                      </div>
 
                               
 		                      <div class="modal-footer">
-		                          <button class="btn btn-theme" href="perfil.jsp" type="submit">Crear Cuenta</button>
+		                          <button class="btn btn-theme" href="login.jsp" type="submit">Crear Cuenta</button>
                                   <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
 		                          
 		                      </div>

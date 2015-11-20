@@ -3,14 +3,16 @@ package ec.edu.epn.modelo.servicio;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import ec.edu.epn.modelo.vo.InformacionConexionBDD;
 import ec.edu.epn.modelo.vo.UsuarioVO;
 
 public class ServicioUsuario {
 	
 	InformacionConexionBDD ic = new InformacionConexionBDD();
-
+	//BUSCAR
 	public UsuarioVO buscarUsuario(String email, String password) {
 		UsuarioVO usr = new UsuarioVO();
 		try {
@@ -38,7 +40,7 @@ public class ServicioUsuario {
 		}
 		return usr;
 	}
-
+	//REGISTRAR
 	public void registrarUsuario(UsuarioVO usr) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -59,7 +61,55 @@ public class ServicioUsuario {
 		}
 
 	}
+	//LISTAR
+	public List<UsuarioVO> listarUsuario(UsuarioVO usrLogeado, String emailUsuario) {
+		List<UsuarioVO> listaUsuarios = new ArrayList<UsuarioVO>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
 
+			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
+			PreparedStatement st = null;
+			/*
+			if ((usrLogeado.isAdmin() == true) && (emailUsuario.equals(""))) {
+				st = con.prepareStatement("Select * from USUARIO");
+			}
+			if ((usrLogeado.isAdmin() == true) && (emailUsuario.equals("") == false)) {
+				st = con.prepareStatement("Select * from USUARIO where EMAILUSR LIKE ?");
+				st.setString(1, "%" + emailUsuario + "%");
+			}
+			if ((usrLogeado.isAdmin() == false)) {
+				st = con.prepareStatement("Select * from USUARIO where EMAILUSR=?");
+				st.setString(1, usrLogeado.getEmail());
+			}
+			*/
+			st.execute();
+			ResultSet rs = st.getResultSet();
+
+			while (rs.next()) {
+				UsuarioVO usr = new UsuarioVO();
+				usr.setNombre(rs.getString("NOMBREUSR"));
+				usr.setEmail(rs.getString("EMAILUSR"));
+				usr.setPassword(rs.getString("PASSWORDUSR"));
+				usr.setApellido(rs.getString("APELLIDOUSR"));
+				//usr.setAdmin(rs.getBoolean("ADMINUSR"));
+				usr.setEstado(rs.getBoolean("ESTADOUSR"));
+				listaUsuarios.add(usr);
+			}
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listaUsuarios;
+	}
+	
+	
+	//MODIFICAR
 	public void modificarUsuario(UsuarioVO usrInicio, UsuarioVO usrFin) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -80,7 +130,7 @@ public class ServicioUsuario {
 		}
 
 	}
-	
+	//DAR DE BAJA
 	public void darDeBajaUsuario(UsuarioVO usr) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -98,7 +148,7 @@ public class ServicioUsuario {
 		}
 
 	}
-	
+	//ELIMINAR
 	public void eliminarUsuario(UsuarioVO usr) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

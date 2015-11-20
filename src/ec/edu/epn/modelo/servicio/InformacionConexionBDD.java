@@ -1,4 +1,4 @@
-package ec.edu.epn.modelo.vo;
+package ec.edu.epn.modelo.servicio;
 
 public class InformacionConexionBDD {
 	private String servidor = "localhost:3306";

@@ -6,12 +6,15 @@ public class UsuarioVO {
 	private String nombre;
 	private String apellido;
 	private boolean estado;
+	private boolean administrador;
 	public UsuarioVO() {
-		this.email="";
-		this.password="";
-		this.nombre="";
-		this.apellido="";
-		this.estado=true;
+		super();
+		this.email = "";
+		this.password = "";
+		this.nombre = "";
+		this.apellido = "";
+		this.estado = true;
+		this.administrador = false;
 	}
 	public String getEmail() {
 		return email;
@@ -43,5 +46,10 @@ public class UsuarioVO {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
+	public boolean isAdministrador() {
+		return administrador;
+	}
+	public void setAdministrador(boolean administrador) {
+		this.administrador = administrador;
+	}
 }

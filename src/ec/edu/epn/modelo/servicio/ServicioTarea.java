@@ -7,28 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ec.edu.epn.modelo.vo.MateriaVO;
+import ec.edu.epn.modelo.vo.TareaVO;
 import ec.edu.epn.modelo.vo.UsuarioVO;
 
-public class ServicioMateria {
+public class ServicioTarea {
 
 	InformacionConexionBDD ic = new InformacionConexionBDD();
 	//BUSCAR
-	public MateriaVO buscarMateria(String nombre, UsuarioVO usuario) {
-		MateriaVO mat = new MateriaVO();
+	public TareaVO buscarTarea(String nombre, MateriaVO materia) {
+		TareaVO tar = new TareaVO();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
-
 			PreparedStatement st = con
-					.prepareStatement("Select * from MATERIA where NOMBREMATERIA=? and USUARIO_EMAILUSR=?");
+					.prepareStatement("Select * from TAREA where IDTAREA=? and MATERIA_NOMBREMATERIA=?");
 			st.setString(1, nombre);
-			st.setString(2, usuario.getEmail());
+			//st.setString(2, materia.getEmail());
 			st.execute();
 			ResultSet rs = st.getResultSet();
 			while (rs.next()) {
-				mat.setNombre(rs.getString("NOMBREMATERIA"));
-				mat.setProfesor(rs.getString("PROFESORMATERIA"));
-				mat.setAula(rs.getString("AULAMATERIA"));
+				//tar.setNombre(rs.getString("NOMBREMATERIA"));
+				//tar.setProfesor(rs.getString("PROFESORMATERIA"));
+				//tar.setAula(rs.getString("AULAMATERIA"));
 				//mat.setUsuario(rs.getString("USUARIO_EMAILUSR"));
 			}
 			st.close();
@@ -36,7 +36,7 @@ public class ServicioMateria {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mat;
+		return tar;
 	}
 	//REGISTRAR
 	public void registrarMateria(MateriaVO mat, UsuarioVO usr) {
@@ -118,5 +118,5 @@ public class ServicioMateria {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
