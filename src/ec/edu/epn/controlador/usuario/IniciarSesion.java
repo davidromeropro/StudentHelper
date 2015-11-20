@@ -33,9 +33,9 @@ public class IniciarSesion extends HttpServlet {
 		// TODO Auto-generated method stub
 		UsuarioVO usrLogeado=(UsuarioVO)request.getSession().getAttribute("usuarioLogeado");
 		if(usrLogeado==null){
-		getServletConfig().getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/usuario/iniciarSesionUsuario.jsp").forward(request, response);
 		}else{
-			getServletConfig().getServletContext().getRequestDispatcher("/perfil.jsp").forward(request, response);		
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/home.jsp").forward(request, response);		
 		}
 	}
 

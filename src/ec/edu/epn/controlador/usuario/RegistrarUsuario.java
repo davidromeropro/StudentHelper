@@ -31,7 +31,7 @@ public class RegistrarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		getServletConfig().getServletContext().getRequestDispatcher("/login.jsp#signUp").forward(request, response);
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/usuario/crearCuentaUsuario.jsp").forward(request, response);
 	}
 
 	/**
@@ -43,9 +43,9 @@ public class RegistrarUsuario extends HttpServlet {
 		usrVO.setEstado(true);
 		//request.setAttribute("errorCreacionUsuario", false);
 		try{
-			usrVO.setApellido(request.getParameter("apellido"));
-			usrVO.setNombre(request.getParameter("nombre"));
 			usrVO.setEmail(request.getParameter("email"));
+			usrVO.setNombre(request.getParameter("nombre"));
+			usrVO.setApellido(request.getParameter("apellido"));
 			usrVO.setPassword(request.getParameter("password"));
 			ServicioUsuario sc=new ServicioUsuario();
 			sc.registrarUsuario(usrVO);
