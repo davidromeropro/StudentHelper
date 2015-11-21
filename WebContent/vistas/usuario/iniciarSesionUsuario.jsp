@@ -21,21 +21,18 @@
 			<div class="login-wrap">
 
 				<input type="text" class="form-control" placeholder="Email"
-					autofocus name="email" required="true"> <br> <input
+					autofocus name="email" required title="Por favor llenar este campo"> <br> <input
 					type="password" class="form-control" placeholder="Password"
-					name="password" required="true">
+					name="password" required>
 					<br>
-				<button class="btn btn-theme btn-block" href="" type="submit">
+				<button class="btn btn-theme btn-block" type="submit">
 					<i class="fa fa-lock"></i> SIGN IN
 				</button>
-
+				<hr>
 				<div class="registration">
 					No tienes cuenta?<br>
-					<p>
 						<a href="${pageContext.request.contextPath}/Usuario/Registrar">
 							Crear una cuenta</a>
-					</p>
-
 				</div>
 
 			</div>

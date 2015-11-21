@@ -14,7 +14,7 @@ import ec.edu.epn.modelo.vo.UsuarioVO;
 /**
  * Servlet implementation class IniciarSesion
  */
-@WebServlet("/IniciarSesion")
+@WebServlet("/Usuario/IniciarSesion")
 public class IniciarSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

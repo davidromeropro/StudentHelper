@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CerrarSesionUsuario
  */
-@WebServlet("/CerrarSesionUsuario")
+@WebServlet("/Usuario/CerrarSesion")
 public class CerrarSesionUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +27,8 @@ public class CerrarSesionUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getSession().invalidate();
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/Home").forward(request, response);
 	}
 
 	/**

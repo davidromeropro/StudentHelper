@@ -1,20 +1,18 @@
 package ec.edu.epn.controlador.usuario;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import ec.edu.epn.modelo.servicio.ServicioUsuario;
 import ec.edu.epn.modelo.vo.UsuarioVO;
 
 /**
  * Servlet implementation class RegistrarUsuario
  */
-@WebServlet("/RegistrarUsuario")
+@WebServlet("/Usuario/Registrar")
 public class RegistrarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,7 +39,8 @@ public class RegistrarUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		UsuarioVO usrVO=new UsuarioVO();
 		usrVO.setEstado(true);
-		//request.setAttribute("errorCreacionUsuario", false);
+		usrVO.setAdministrador(false);
+		request.setAttribute("errorCreacionUsuario", false);
 		try{
 			usrVO.setEmail(request.getParameter("email"));
 			usrVO.setNombre(request.getParameter("nombre"));
@@ -51,7 +50,7 @@ public class RegistrarUsuario extends HttpServlet {
 			sc.registrarUsuario(usrVO);
 		}catch(Exception e){
 			e.printStackTrace();
-			//request.setAttribute("errorCreacionUsuario", true);		
+			request.setAttribute("errorCreacionUsuario", true);
 		}
 		doGet(request, response);
 	}

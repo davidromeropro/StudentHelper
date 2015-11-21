@@ -6,11 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ec.edu.epn.modelo.servicio.ServicioUsuario;
+import ec.edu.epn.modelo.vo.UsuarioVO;
 
 /**
  * Servlet implementation class ModificarUsuario
  */
-@WebServlet("/ModificarUsuario")
+@WebServlet("/Usuario/Modificar")
 public class ModificarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +29,17 @@ public class ModificarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String email = (String) request.getParameter("emailModificar");
+		if (email == null) {
+			email = "";
+		}
+		ServicioUsuario sc = new ServicioUsuario();
+		UsuarioVO usr = sc.buscarUsuarioByEmail(email);
+		if (usr == null) {
+			request.setAttribute("errorActualizacionUsuario", true);
+		}
+		request.setAttribute("usuarioModificar", usr);
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/usuario/modificar.jsp").forward(request, response);
 	}
 
 	/**
@@ -35,6 +47,35 @@ public class ModificarUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		UsuarioVO usuarioLogeado = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");
+		boolean error = false;
+		boolean existe = true;
+		UsuarioVO usrInicial = new UsuarioVO();
+		UsuarioVO usrFinal = new UsuarioVO();
+		usrInicial.setEmail((String) request.getParameter("email"));
+		if (usrFinal.getEmail() == null) {
+			existe = false;
+		}
+		if (existe == true) {
+			usrFinal.setApellido((String) request.getParameter("apellido"));
+			usrFinal.setNombre((String) request.getParameter("nombre"));
+			usrFinal.setPassword((String) request.getParameter("password"));
+			boolean permisos = true;
+			if ((usuarioLogeado.isAdministrador() == false)
+					&& (usuarioLogeado.getEmail().equals(usrInicial.getEmail()) == false))
+				permisos = false;
+			try {
+				ServicioUsuario sc = new ServicioUsuario();
+				if (permisos == true)
+					sc.modificarUsuario(usrInicial, usrFinal);
+			} catch (Exception e) {
+				e.printStackTrace();
+				error = true;
+				request.setAttribute("errorActualizacionUsuario", error);
+			}
+		} else {
+			request.setAttribute("errorActualizacionUsuario", error);
+		}
 		doGet(request, response);
 	}
 
