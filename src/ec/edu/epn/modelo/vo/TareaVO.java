@@ -7,14 +7,14 @@ public class TareaVO {
 	private String titulo;
 	private String descripcion;
 	private Date fechaEntrega;
-	private String materiaNombre;
+	private int materiaId;
 	public TareaVO() {
 		super();
 		this.id = 0;
 		this.titulo = "";
 		this.descripcion = "";
 		this.fechaEntrega = null;
-		this.materiaNombre = "";
+		this.materiaId = 0;
 	}
 	public int getId() {
 		return id;
@@ -40,10 +40,10 @@ public class TareaVO {
 	public void setFechaEntrega(Date fechaEntrega) {
 		this.fechaEntrega = fechaEntrega;
 	}
-	public String getMateriaNombre() {
-		return materiaNombre;
+	public int getMateriaId() {
+		return materiaId;
 	}
-	public void setMateriaNombre(String materiaNombre) {
-		this.materiaNombre = materiaNombre;
+	public void setMateriaId(int materiaId) {
+		this.materiaId = materiaId;
 	}
 }

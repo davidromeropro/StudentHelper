@@ -6,13 +6,13 @@ public class ExamenVO {
 	private int id;
 	private String tema;
 	private Date fecha;
-	private String materiaNombre;
+	private int materiaId;
 	public ExamenVO() {
 		super();
 		this.id = 0;
 		this.tema = "";
 		this.fecha = null;
-		this.materiaNombre = "";
+		this.materiaId = 0;
 	}
 	public int getId() {
 		return id;
@@ -32,10 +32,10 @@ public class ExamenVO {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public String getMateriaNombre() {
-		return materiaNombre;
+	public int getMateriaId() {
+		return materiaId;
 	}
-	public void setMateriaNombre(String materiaNombre) {
-		this.materiaNombre = materiaNombre;
+	public void setMateriaId(int materiaId) {
+		this.materiaId = materiaId;
 	}
 }

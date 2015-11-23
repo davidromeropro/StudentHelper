@@ -35,7 +35,7 @@ public class IniciarSesion extends HttpServlet {
 		if(usrLogeado==null){
 		getServletConfig().getServletContext().getRequestDispatcher("/vistas/usuario/iniciarSesionUsuario.jsp").forward(request, response);
 		}else{
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/home.jsp").forward(request, response);		
+			getServletConfig().getServletContext().getRequestDispatcher("/Home").forward(request, response);		
 		}
 	}
 
@@ -45,21 +45,19 @@ public class IniciarSesion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String email="";
-		String password="";
-		ServicioUsuario sc=new ServicioUsuario();
+		ServicioUsuario su=new ServicioUsuario();
 		try{
 			email=(String)request.getParameter("email");
-			password=(String)request.getParameter("password");
 		}catch(Exception e){
 			email="";
-			password="";
 		}
 		
-		UsuarioVO usr= sc.buscarUsuario(email, password);
-		if(usr!=null){
+		UsuarioVO usr=su.buscarUsuario(email);
+		if(usr.getEmail()!=""){
 			request.getSession().setAttribute("usuarioLogeado", usr);
 			System.out.println(usr.getNombre());
 		}else{
+			System.out.println("No existe usuario");
 			request.setAttribute("errorLogin", true);
 		}
 		doGet(request, response);

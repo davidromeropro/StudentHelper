@@ -1,35 +1,57 @@
-
+        /*BUTTONS*/
         .btn-xlarge {
-            padding: 18px 28px;
+            padding: 17px 31px;
             font-size: 22px; //change this to your desired size
             line-height: normal;
             -webkit-border-radius: 8px;
                -moz-border-radius: 8px;
                     border-radius: 8px;
 
-            border-color: #62ebd1;
+            border-color: #61c0ec;
         }
 
+        .btn.sharp {
+          padding: 21px 15px;
+        }
+
+
+
+        /*PANEL*/
+        .panel > .panel-heading {
+            background-image: none;
+            color: white;
+            height: 50px;
+
+        }
+
+        .panel-body {
+            height: 100%;
+        }
+
+        .panel > .panel-footer {
+            background-image: none;
+            color: white;
+            height: 50px;
+
+        }
+
+        /*FOOTER*/
         #footer{
           text-align: center;
           color: white;
-          font-size: 12px;
-          background: #62ebd1;
-          padding-top: 10px;
+          font-size: 10px;
+          background: #61c0ec;
+          padding-top: 5px;
+          padding-bottom: 5px;
           width:100%;
-          position:fixed;
           bottom:0px;
           left:0;
-        }
-
-        header{
-          background: #4abc96;
         }
 
         /*LOGIN CONFIGURATION PAGE*/
         .form-login {
         	max-width: 330px;
-        	margin: 100px auto 0;
+        	margin: 10px auto 0;
         	background: #fff;
         	border-radius: 5px;
         	-webkit-border-radius: 5px;
@@ -39,7 +61,7 @@
         	margin: 0;
         	padding: 25px 20px;
         	text-align: center;
-        	background: #68dff0;
+        	background: #337ab7;
         	border-radius: 5px 5px 0 0;
         	-webkit-border-radius: 5px 5px 0 0;
         	color: #fff;
@@ -61,4 +83,26 @@
 
         #menu{
           padding-bottom: 50px;
+        }
+
+        .jumbotron {
+          margin-bottom: 0px;
+          background-image: url(../img/jumbotronbackground.jpg);
+          background-position: 0% 25%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-color: #afe0ef;
+          color: #002651;
+        }
+        
+        /*a link*/
+        a {
+            color: white;
+        }
+        a:hover {
+            color: #f2f2f2;
+        }
+        a:visited {
+            color: white;
+            text-decoration: none;
         }

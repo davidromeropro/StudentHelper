@@ -28,7 +28,7 @@ public class CerrarSesionUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getSession().invalidate();
-		getServletConfig().getServletContext().getRequestDispatcher("/vistas/Home").forward(request, response);
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/index.jsp").forward(request, response);
 	}
 
 	/**

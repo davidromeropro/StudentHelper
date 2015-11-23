@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:include page="/templates/header.jsp"></jsp:include>
-<body background="${pageContext.request.contextPath}/images/background.jpg">
+    pageEncoding="UTF-8"%>
+<jsp:include page="/templates/header2.jsp"></jsp:include>
 <div id="login-page">
 	<div class="container">
 		<%
@@ -31,7 +30,7 @@
 				<hr>
 				<div class="registration">
 					No tienes cuenta?<br>
-						<a href="${pageContext.request.contextPath}/Usuario/Registrar">
+						<a class="btn btn-primary" href="${pageContext.request.contextPath}/Usuario/Registrar">
 							Crear una cuenta</a>
 				</div>
 
@@ -39,5 +38,4 @@
 		</form>		
 	</div>
 </div>
-
 <jsp:include page="/templates/footer.jsp"></jsp:include>

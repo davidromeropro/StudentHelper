@@ -1,6 +1,7 @@
 package ec.edu.epn.controlador.usuario;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import ec.edu.epn.modelo.vo.UsuarioVO;
 /**
  * Servlet implementation class AdministrarUsuario
  */
-@WebServlet("/AdministrarUsuario")
+@WebServlet("/Usuario/Administrar")
 public class AdministrarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,21 +37,33 @@ public class AdministrarUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
 		UsuarioVO usrLogeado = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");
-		if (email == null) {
-			email = "";
-		}
-		if (usrLogeado != null) {
-			try {
-				ServicioUsuario sc = new ServicioUsuario();
-				List<UsuarioVO> listaUsuariosVO = sc.listarUsuarios(usrLogeado, email);
-				request.setAttribute("listaUsuariosAdministrar", listaUsuariosVO);
+		if (usrLogeado == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/index.jsp").forward(request, response);
 
-			} catch (Exception e) {
-				e.printStackTrace();
+		} else {
+			List<UsuarioVO> listaUsuariosVO = new ArrayList<UsuarioVO>();
+			ServicioUsuario su = new ServicioUsuario();
+			if (usrLogeado.isAdministrador() == true) {
+				try {
+					if (email == null) {
+						listaUsuariosVO = su.listarUsuariosAll();
+					} else {
+						listaUsuariosVO = su.listarUsuariosByMail(email);
+					}
+					request.setAttribute("listaUsuariosAdministrar", listaUsuariosVO);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/usuario/administrar.jsp")
+						.forward(request, response);
+
+			} else {
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/index.jsp").forward(request,
+						response);
+
 			}
 		}
-		getServletConfig().getServletContext().getRequestDispatcher("/vistas/cuenta/administrar.jsp").forward(request,
-				response);
+
 	}
 
 	/**

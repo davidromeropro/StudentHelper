@@ -1,12 +1,13 @@
 package ec.edu.epn.modelo.vo;
 
 public class MateriaVO {
+	private int id;
 	private String nombre;
 	private String profesor;
 	private String aula;
 	private String usuarioEmail;
 	public MateriaVO() {
-		super();
+		this.id=0;
 		this.nombre = "";
 		this.profesor = "";
 		this.aula = "";
@@ -35,5 +36,11 @@ public class MateriaVO {
 	}
 	public void setUsuarioEmail(String usuarioEmail) {
 		this.usuarioEmail = usuarioEmail;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

@@ -12,16 +12,15 @@ public class ServicioUsuario {
 	
 	InformacionConexionBDD ic = new InformacionConexionBDD();
 
-	public UsuarioVO buscarUsuario(String email, String password) {
+	public UsuarioVO buscarUsuario(String email) {
 		UsuarioVO usr = new UsuarioVO();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
 			PreparedStatement st = con
-					.prepareStatement("Select * from USUARIO where EMAILUSR=? and PASSWORDUSR=? and ESTADOUSR=?");
+					.prepareStatement("Select * from USUARIO where EMAILUSR=? and ESTADOUSR=?");
 			st.setString(1, email);
-			st.setString(2, password);
-			st.setBoolean(3, true);
+			st.setBoolean(2, true);
 			st.execute();
 			ResultSet rs = st.getResultSet();
 			while (rs.next()) {
@@ -30,6 +29,7 @@ public class ServicioUsuario {
 				usr.setPassword(rs.getString("PASSWORDUSR"));
 				usr.setApellido(rs.getString("APELLIDOUSR"));
 				usr.setEstado(rs.getBoolean("ESTADOUSR"));
+				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
 			}
 			st.close();
 			con.close();
@@ -50,7 +50,7 @@ public class ServicioUsuario {
 			st.setString(3, usr.getNombre());
 			st.setString(4, usr.getApellido());
 			st.setBoolean(5, true);
-			st.setBoolean(5, false);
+			st.setBoolean(6, false);
 			st.execute();
 			st.close();
 			con.close();
@@ -60,23 +60,41 @@ public class ServicioUsuario {
 		}
 
 	}
-
-	public List<UsuarioVO> listarUsuarios(UsuarioVO usrLogeado, String emailUsuario) {
+	public List<UsuarioVO> listarUsuariosAll() {
 		List<UsuarioVO> listaUsuarios = new ArrayList<UsuarioVO>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-
 			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
 			PreparedStatement st = null;
-			
-			if ((usrLogeado.isAdministrador() == true) && (emailUsuario.equals(""))) {
-				st = con.prepareStatement("Select * from USUARIO");
+			st = con.prepareStatement("Select * from USUARIO");
+			st.execute();
+			ResultSet rs = st.getResultSet();
+			while (rs.next()) {
+				UsuarioVO usr = new UsuarioVO();
+				usr.setNombre(rs.getString("NOMBREUSR"));
+				usr.setEmail(rs.getString("EMAILUSR"));
+				usr.setPassword(rs.getString("PASSWORDUSR"));
+				usr.setApellido(rs.getString("APELLIDOUSR"));
+				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
+				usr.setEstado(rs.getBoolean("ESTADOUSR"));
+				listaUsuarios.add(usr);
 			}
-			if ((usrLogeado.isAdministrador() == true) && (emailUsuario.equals("") == false)) {
-				st = con.prepareStatement("Select * from USUARIO where EMAILUSR LIKE ?");
-				st.setString(1, "%" + emailUsuario + "%");
-			}
-			
+			st.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listaUsuarios;
+	}
+
+	public List<UsuarioVO> listarUsuariosByMail(String emailUsuario) {
+		List<UsuarioVO> listaUsuarios = new ArrayList<UsuarioVO>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
+			PreparedStatement st = null;
+			st = con.prepareStatement("Select * from USUARIO where EMAILUSR LIKE ?");
+			st.setString(1, "%" + emailUsuario + "%");			
 			st.execute();
 			ResultSet rs = st.getResultSet();
 
@@ -86,7 +104,7 @@ public class ServicioUsuario {
 				usr.setEmail(rs.getString("EMAILUSR"));
 				usr.setPassword(rs.getString("PASSWORDUSR"));
 				usr.setApellido(rs.getString("APELLIDOUSR"));
-				usr.setAdministrador(rs.getBoolean("ADMINUSR"));
+				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
 				usr.setEstado(rs.getBoolean("ESTADOUSR"));
 				listaUsuarios.add(usr);
 			}
@@ -103,12 +121,11 @@ public class ServicioUsuario {
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
 			PreparedStatement st = con.prepareStatement(
-					"UPDATE USUARIO SET EMAILUSR=?,PASSWORDUSR=?, NOMBREUSR=?, APELLIDOUSR=? WHERE EMAILUSR=?");
-			st.setString(1, usrFin.getEmail());
-			st.setString(2, usrFin.getPassword());
-			st.setString(3, usrFin.getNombre());
-			st.setString(4, usrFin.getApellido());
-			st.setString(5, usrInicio.getEmail());
+					"UPDATE USUARIO PASSWORDUSR=?, NOMBREUSR=?, APELLIDOUSR=? WHERE EMAILUSR=?");
+			st.setString(1, usrFin.getPassword());
+			st.setString(2, usrFin.getNombre());
+			st.setString(3, usrFin.getApellido());
+			st.setString(4, usrInicio.getEmail());
 			st.execute();
 			st.close();
 			con.close();
@@ -166,7 +183,7 @@ public class ServicioUsuario {
 				usr.setEmail(rs.getString("EMAILUSR"));
 				usr.setPassword(rs.getString("PASSWORDUSR"));
 				usr.setApellido(rs.getString("APELLIDOUSR"));
-				usr.setAdministrador(rs.getBoolean("ADMINUSR"));
+				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
 				usr.setEstado(rs.getBoolean("ESTADOUSR"));
 			}
 			st.close();

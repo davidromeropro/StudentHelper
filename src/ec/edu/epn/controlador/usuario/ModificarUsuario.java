@@ -38,7 +38,7 @@ public class ModificarUsuario extends HttpServlet {
 		if (usr == null) {
 			request.setAttribute("errorActualizacionUsuario", true);
 		}
-		request.setAttribute("usuarioModificar", usr);
+		request.getSession().setAttribute("usuarioModificar", usr);
 		getServletConfig().getServletContext().getRequestDispatcher("/vistas/usuario/modificar.jsp").forward(request, response);
 	}
 
@@ -50,9 +50,8 @@ public class ModificarUsuario extends HttpServlet {
 		UsuarioVO usuarioLogeado = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");
 		boolean error = false;
 		boolean existe = true;
-		UsuarioVO usrInicial = new UsuarioVO();
+		UsuarioVO usrInicial = (UsuarioVO) request.getSession().getAttribute("usuarioModificar");
 		UsuarioVO usrFinal = new UsuarioVO();
-		usrInicial.setEmail((String) request.getParameter("email"));
 		if (usrFinal.getEmail() == null) {
 			existe = false;
 		}

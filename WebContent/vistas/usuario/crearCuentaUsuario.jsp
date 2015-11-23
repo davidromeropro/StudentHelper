@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:include page="/templates/header.jsp"></jsp:include>
-<body>
+	pageEncoding="UTF-8"%>	
+<jsp:include page="/templates/header2.jsp"></jsp:include>
 	<div class="container">
 		<%
 			Boolean errorCreacionUsuario = (Boolean) request.getAttribute("errorCreacionUsuario");
@@ -21,7 +20,7 @@
 				<p>Ingresar datos</p>
 				<input id="textfield3" type="email" name="email"
 					placeholder="Correo" autocomplete="off"
-					class="form-control placeholder-no-fix" required="true"> <br> <input
+					class="form-control placeholder-no-fix" required title="Email es requerido"> <br> <input
 					id="textfield1" type="text" name="nombre" placeholder="Nombre"
 					autocomplete="off" class="form-control placeholder-no-fix">
 				<br> <input id="textfield2" type="text" name="apellido"
@@ -29,13 +28,12 @@
 					class="form-control placeholder-no-fix"> <br> <input
 					id="textfield4" type="password" name="password"
 					placeholder="Password" autocomplete="off"
-					class="form-control placeholder-no-fix" required="true">
+					class="form-control placeholder-no-fix" required title="Password es requerido">
 				<hr>
-
-				<button class="btn btn-theme" href="" type="submit">Crear
-					Cuenta</button>
-				<button class="btn btn-default" onclick="clearFields()"
-					type="button">Cancelar</button>
+                <button class="btn btn-primary" type="submit">Crear Cuenta</button>
+                <a class="btn btn-default" href="${pageContext.request.contextPath}/Usuario/CerrarSesion" type="button">Cancelar</a>
+                <a class="btn btn-danger" href="${pageContext.request.contextPath}/Usuario/IniciarSesion" type="button">Login</a>
+                
 			</div>
 		</form>
 
