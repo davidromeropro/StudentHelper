@@ -45,14 +45,17 @@ public class IniciarSesion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String email="";
+		String password="";
 		ServicioUsuario su=new ServicioUsuario();
 		try{
 			email=(String)request.getParameter("email");
+			password=(String)request.getParameter("password");
 		}catch(Exception e){
 			email="";
+			password="";
 		}
 		
-		UsuarioVO usr=su.buscarUsuario(email);
+		UsuarioVO usr=su.verificarLogin(email, password);
 		if(usr.getEmail()!=""){
 			request.getSession().setAttribute("usuarioLogeado", usr);
 			System.out.println(usr.getNombre());

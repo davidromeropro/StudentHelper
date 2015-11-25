@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ page
 	import="java.util.*, ec.edu.epn.modelo.vo.*, ec.edu.epn.modelo.servicio.*"%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
-<h2 align="center">Materias</h2>
+<h2 align="center">Tareas</h2>
 <div class="container" align="center">
 	<form>
 		<div class="input-group">
 			<input type="text" data-i-search-input="true" class="form-control"
-				name="nombreMat" data-autocomplete="true"
-				data-autocomplete-url="" placeholder="Buscar por nombre"> <span
-				class="input-group-btn"><button class="btn btn-primary"
-					type="submit">Buscar</button></span>
+				name="tituloTar" data-autocomplete="true"
+				data-autocomplete-url="" placeholder="Buscar por título"> 
+			<input
+				type="text" data-i-search-input="true" class="form-control"
+				name="nombreMat" value="" data-autocomplete="true"
+				data-autocomplete-url="" placeholder="Buscar por materia"> <span
+				class="input-group-btn"><button
+					class="btn btn-primary btn-lg sharp" type="submit">Buscar</button></span>
 		</div>
 	</form>
 	<br>
@@ -20,37 +24,35 @@
 		<div class="container" align="center">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<p>
-					<h4>Lista de materias</h4>
-					</p>
+					<h4>Lista de tareas</h4>
 				</div>
 				<div class="panel-body">
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Nombre</th>
+								<th>Título</th>
 							</tr>
 						</thead>
-						<%
-					List<MateriaVO> listaMaterias = (List<MateriaVO>)request.getAttribute("listaMaterias");
-					if (listaMaterias == null) {
-						listaMaterias = new ArrayList<MateriaVO>();
+				<%
+					List<TareaVO> listaTareas = (List<TareaVO>)request.getAttribute("listaTareas");
+					if (listaTareas == null) {
+						listaTareas = new ArrayList<TareaVO>();
 					}
-					for (MateriaVO mat : listaMaterias) {
+					for (TareaVO tar : listaTareas) {
 				%>
 						<tr>
 							<td>
 								<form method="get"
-									action="${pageContext.request.contextPath}/Materia/Info">
+									action="${pageContext.request.contextPath}/Tarea/Info">
 									<button type="submit" class="btn btn-default"
-										value="<%=mat.getId()%>" name="idMateriaVer"><%=mat.getNombre()%></button>
+										value="<%=tar.getId()%>" name="idTareaVer"><%=tar.getTitulo()%></button>
 								</form>
 							</td>
 							<td>
 								<form method="get"
-									action="${pageContext.request.contextPath}/Materia/Modificar">
+									action="${pageContext.request.contextPath}/Tarea/Modificar">
 									<button type="submit" class="btn btn-primary"
-										value="<%=mat.getId()%>" name="idMateriaModificar">
+										value="<%=tar.getId()%>" name="idTareaModificar">
 										<i class="glyphicon glyphicon-pencil"
 											title="Modificar Usuario"></i>
 									</button>
@@ -58,24 +60,21 @@
 							</td>
 							<td>
 								<form method="post"
-									action="${pageContext.request.contextPath}/Materia/Eliminar">
+									action="${pageContext.request.contextPath}/Tarea/Eliminar">
 									<button type="submit" class="btn btn-danger"
-										value="<%=mat.getId()%>" name="idMateriaEliminar">
+										value="<%=tar.getId()%>" name="idTareaEliminar">
 										<i class="glyphicon glyphicon-remove" title="Eliminar item"></i>
 									</button>
 								</form>
 							</td>
 						</tr>
-						<%
-							}
-						%>
+					<%} %>
 					</table>
 				</div>
 			</div>
-			<a type="button" href="${pageContext.request.contextPath}/Materia/Registrar" class="btn btn-primary btn-lg btn-block">Agregar
-				materia</a>
+			<a type="button" href="${pageContext.request.contextPath}/Tarea/Registrar" class="btn btn-primary btn-lg btn-block">Agregar
+				tarea</a>
 		</div>
 	</div>
 </div>
-
 <jsp:include page="/templates/footer.jsp"></jsp:include>

@@ -35,14 +35,14 @@ public class ModificarTarea extends HttpServlet {
 		// TODO Auto-generated method stub
 		UsuarioVO usrLogeado = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");
 		int idTarea = Integer.parseInt(request.getParameter("idTareaModificar"));
-		ServicioTarea sm = new ServicioTarea();
-		TareaVO tarVOInicial = sm.buscarTarea(idTarea);
+		ServicioTarea st = new ServicioTarea();
+		TareaVO tarVOInicial = st.buscarTarea(idTarea);
 		request.getSession().setAttribute("tareaModificar", tarVOInicial);
 		if (usrLogeado == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/index.jsp").forward(request, response);
 
 		} else {
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/materia/modificar.jsp")
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/tarea/modificar.jsp")
 					.forward(request, response);
 		}
 	}
@@ -63,11 +63,13 @@ public class ModificarTarea extends HttpServlet {
 				TareaVO tareaVOFinal = new TareaVO();
 				tareaVOFinal.setTitulo(titulo);
 				tareaVOFinal.setDescripcion(request.getParameter("descripcionTar"));
+				//tareaVOFinal.setMateriaId(Integer.parseInt(request.getParameter("idMat")));
 				String fechaE=request.getParameter("fechaEntregaTar");
+				tareaVOFinal.setFechaEntrega(fechaE);
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				try {
 					Date fechaEntrega= formatter.parse(fechaE);
-					tareaVOFinal.setFechaEntrega(fechaEntrega);
+					tareaVOFinal.setFechaE(fechaEntrega);
 				} catch (Exception e) {
 					e.printStackTrace();
 					request.setAttribute("errorCreacionTarea", true);

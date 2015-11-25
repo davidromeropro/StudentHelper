@@ -6,14 +6,16 @@ public class TareaVO {
 	private int id;
 	private String titulo;
 	private String descripcion;
-	private Date fechaEntrega;
+	private String fechaEntrega;
+	private Date fechaE;
 	private int materiaId;
 	public TareaVO() {
 		super();
 		this.id = 0;
 		this.titulo = "";
 		this.descripcion = "";
-		this.fechaEntrega = null;
+		this.fechaEntrega="";
+		this.fechaE = null;
 		this.materiaId = 0;
 	}
 	public int getId() {
@@ -34,16 +36,22 @@ public class TareaVO {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public Date getFechaEntrega() {
-		return fechaEntrega;
+	public Date getFechaE() {
+		return fechaE;
 	}
-	public void setFechaEntrega(Date fechaEntrega) {
-		this.fechaEntrega = fechaEntrega;
+	public void setFechaE(Date fechaEntrega) {
+		this.fechaE = fechaEntrega;
 	}
 	public int getMateriaId() {
 		return materiaId;
 	}
 	public void setMateriaId(int materiaId) {
 		this.materiaId = materiaId;
+	}
+	public String getFechaEntrega() {
+		return fechaEntrega;
+	}
+	public void setFechaEntrega(String fecha) {
+		this.fechaEntrega = fecha;
 	}
 }

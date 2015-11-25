@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, ec.edu.epn.modelo.vo.*, ec.edu.epn.modelo.servicio.*"%>
+<%@ page
+	import="java.util.*, ec.edu.epn.modelo.vo.*, ec.edu.epn.modelo.servicio.*"%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <h2 align="center">Perfil</h2>
 <section class="container" align="center">
@@ -14,6 +15,17 @@
 					response);
 		}
 	%>
+	<div
+		style="display: flex; justify-content: center; align-items: center;">
+		<div class="col-sm-3" align="center">
+			<div class="profile-avatar">
+				<img class="img-thumbnail" src="<%=usr.getFotoPerfil()%>"
+					alt="profile picture" />
+			</div>
+
+		</div>
+	</div>
+	<br>
 	<div class="row">
 		<div class="col-md-3 "></div>
 		<div class="col-sm-6" align="center">
@@ -37,7 +49,7 @@
 						</tr>
 						<tr>
 							<td>Correo:</td>
-							<td><%=usr.getEmail() %></td>
+							<td><%=usr.getEmail()%></td>
 						</tr>
 
 						<tr>
@@ -55,7 +67,9 @@
 					</form>
 				</div>
 			</div>
-          <a class="btn btn-info btn-lg btn-block" type="button" href="${pageContext.request.contextPath}/Usuario/Administrar"><i class="glyphicon glyphicon-arrow-left"></i>  Regresar a Tareas</a>
+			<a class="btn btn-info btn-lg btn-block" type="button"
+				href="${pageContext.request.contextPath}/Usuario/Administrar"><i
+				class="glyphicon glyphicon-arrow-left"></i> Regresar a Tareas</a>
 		</div>
 	</div>
 

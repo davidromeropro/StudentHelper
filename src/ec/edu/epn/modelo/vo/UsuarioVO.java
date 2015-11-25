@@ -5,6 +5,7 @@ public class UsuarioVO {
 	private String password;
 	private String nombre;
 	private String apellido;
+	private String fotoPerfil;
 	private boolean estado;
 	private boolean administrador;
 	public UsuarioVO() {
@@ -13,6 +14,7 @@ public class UsuarioVO {
 		this.password = "";
 		this.nombre = "";
 		this.apellido = "";
+		this.fotoPerfil="";
 		this.estado = true;
 		this.administrador = false;
 	}
@@ -51,5 +53,11 @@ public class UsuarioVO {
 	}
 	public void setAdministrador(boolean administrador) {
 		this.administrador = administrador;
+	}
+	public String getFotoPerfil() {
+		return fotoPerfil;
+	}
+	public void setFotoPerfil(String fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
 	}
 }

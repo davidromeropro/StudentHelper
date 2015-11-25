@@ -1,4 +1,4 @@
-package ec.edu.epn.controlador.home;
+package ec.edu.epn.controlador.tarea;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import ec.edu.epn.modelo.vo.UsuarioVO;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class InfoTarea
  */
-@WebServlet("/Home")
-public class Home extends HttpServlet {
+@WebServlet("/Tarea/Info")
+public class InfoTarea extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public InfoTarea() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +32,8 @@ public class Home extends HttpServlet {
 		UsuarioVO usrLogeado = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");
 		if (usrLogeado == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/index.jsp").forward(request, response);
-
 		} else {
-		getServletConfig().getServletContext().getRequestDispatcher("/vistas/home.jsp").forward(request, response);
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/tarea/info.jsp").forward(request, response);
 		}
 	}
 

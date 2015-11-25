@@ -14,16 +14,17 @@
                   &#173 Materia</a></li>
                 <li id="tareas" class="btn span1 btn-xlarge">
                   <a href="${pageContext.request.contextPath}/Tarea/Administrar">
-                  <img src="${pageContext.request.contextPath}/images/icons/freeIcons/PNG/64/free-60-icons-58.png" style="display: block; margin: 0 auto">
+                  <img src="${pageContext.request.contextPath}/images/icons/freeIcons/PNG/64/free-60-icons-12.png" style="display: block; margin: 0 auto">
                   &#173 &#173 Tareas</a></li>
-                <li id="horario" class="btn span1 btn-xlarge">
+                <li id="todolist" class="btn span1 btn-xlarge">
+                  <a href="${pageContext.request.contextPath}/Tarea/ToDoList">
+                  <img src="${pageContext.request.contextPath}/images/icons/freeIcons/PNG/64/free-60-icons-58.png" style="display: block; margin: 0 auto">
+                  &#173 &#173 &#173 To Do</a></li>  
+                  <!-- <li id="horario" class="btn span1 btn-xlarge">
                   <a href="${pageContext.request.contextPath}/Horario/Administrar">
                   <img src="${pageContext.request.contextPath}/images/icons/freeIcons/PNG/64/free-60-icons-16.png" style="display: block; margin: 0 auto">
                   &#173 Horario</a></li>
-                <li id="examenes" class="btn span1 btn-xlarge">
-                  <a href="${pageContext.request.contextPath}/Examen/Administrar">
-                  <img src="${pageContext.request.contextPath}/images/icons/freeIcons/PNG/64/free-60-icons-12.png" style="display: block; margin: 0 auto">
-                  Examen</a></li>
+                   -->
               </ul>
     </div>
   </div>

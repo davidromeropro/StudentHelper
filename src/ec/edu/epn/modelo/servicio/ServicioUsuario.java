@@ -30,6 +30,36 @@ public class ServicioUsuario {
 				usr.setApellido(rs.getString("APELLIDOUSR"));
 				usr.setEstado(rs.getBoolean("ESTADOUSR"));
 				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
+				usr.setFotoPerfil(rs.getString("FOTOPERFILUSR"));
+			}
+			st.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return usr;
+	}
+	
+	public UsuarioVO verificarLogin(String email, String password) {
+		UsuarioVO usr = new UsuarioVO();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
+			PreparedStatement st = con
+					.prepareStatement("Select * from USUARIO where EMAILUSR=? and PASSWORDUSR=? and ESTADOUSR=?");
+			st.setString(1, email);
+			st.setString(2, password);
+			st.setBoolean(3, true);
+			st.execute();
+			ResultSet rs = st.getResultSet();
+			while (rs.next()) {
+				usr.setNombre(rs.getString("NOMBREUSR"));
+				usr.setEmail(rs.getString("EMAILUSR"));
+				usr.setPassword(rs.getString("PASSWORDUSR"));
+				usr.setApellido(rs.getString("APELLIDOUSR"));
+				usr.setEstado(rs.getBoolean("ESTADOUSR"));
+				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
+				usr.setFotoPerfil(rs.getString("FOTOPERFILUSR"));
 			}
 			st.close();
 			con.close();
@@ -77,6 +107,7 @@ public class ServicioUsuario {
 				usr.setApellido(rs.getString("APELLIDOUSR"));
 				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
 				usr.setEstado(rs.getBoolean("ESTADOUSR"));
+				usr.setFotoPerfil(rs.getString("FOTOPERFILUSR"));
 				listaUsuarios.add(usr);
 			}
 			st.close();
@@ -106,6 +137,7 @@ public class ServicioUsuario {
 				usr.setApellido(rs.getString("APELLIDOUSR"));
 				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
 				usr.setEstado(rs.getBoolean("ESTADOUSR"));
+				usr.setFotoPerfil(rs.getString("FOTOPERFILUSR"));
 				listaUsuarios.add(usr);
 			}
 			st.close();
@@ -121,11 +153,12 @@ public class ServicioUsuario {
 			Class.forName("com.mysql.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
 			PreparedStatement st = con.prepareStatement(
-					"UPDATE USUARIO PASSWORDUSR=?, NOMBREUSR=?, APELLIDOUSR=? WHERE EMAILUSR=?");
+					"UPDATE USUARIO SET PASSWORDUSR=?, NOMBREUSR=?, APELLIDOUSR=?, FOTOPERFILUSR=? WHERE EMAILUSR=?");
 			st.setString(1, usrFin.getPassword());
 			st.setString(2, usrFin.getNombre());
 			st.setString(3, usrFin.getApellido());
-			st.setString(4, usrInicio.getEmail());
+			st.setString(4, usrFin.getFotoPerfil());
+			st.setString(5, usrInicio.getEmail());
 			st.execute();
 			st.close();
 			con.close();
@@ -167,31 +200,6 @@ public class ServicioUsuario {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	public UsuarioVO buscarUsuarioByEmail(String email) {
-		UsuarioVO usr = new UsuarioVO();
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			java.sql.Connection con = DriverManager.getConnection(ic.getUrl(), ic.getUsuarioDB(), ic.getPasswordDB());
-			PreparedStatement st = con
-					.prepareStatement("Select * from USUARIO where EMAILUSR=?");
-			st.setString(1, email);
-			st.execute();
-			ResultSet rs = st.getResultSet();
-			while (rs.next()) {
-				usr.setNombre(rs.getString("NOMBREUSR"));
-				usr.setEmail(rs.getString("EMAILUSR"));
-				usr.setPassword(rs.getString("PASSWORDUSR"));
-				usr.setApellido(rs.getString("APELLIDOUSR"));
-				usr.setAdministrador(rs.getBoolean("ADMINISTRADORUSR"));
-				usr.setEstado(rs.getBoolean("ESTADOUSR"));
-			}
-			st.close();
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return usr;
 	}
 
 }

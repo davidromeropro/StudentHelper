@@ -54,18 +54,20 @@ public class RegistrarTarea extends HttpServlet {
 		if (usrLogeado == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/index.jsp").forward(request, response);
 		} else {
-			String tarea = request.getParameter("nombreTar");
+			String tarea = request.getParameter("tituloTar");
 			if (tarea != null) {
 				ServicioTarea st = new ServicioTarea();
 				TareaVO tarVO = new TareaVO();
-				tarVO.setTitulo(request.getParameter("tituloTar"));;
+				tarVO.setTitulo(tarea);;
 				tarVO.setDescripcion(request.getParameter("descripcionTar"));
 				tarVO.setMateriaId(Integer.parseInt(request.getParameter("idMat")));
+				
 				String fechaE=request.getParameter("fechaEntregaTar");
+				tarVO.setFechaEntrega(fechaE);
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				try {
 					Date fechaEntrega= formatter.parse(fechaE);
-					tarVO.setFechaEntrega(fechaEntrega);
+					tarVO.setFechaE(fechaEntrega);
 				} catch (Exception e) {
 					e.printStackTrace();
 					request.setAttribute("errorCreacionTarea", true);

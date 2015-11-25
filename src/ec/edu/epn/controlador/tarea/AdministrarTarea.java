@@ -74,8 +74,8 @@ public class AdministrarTarea extends HttpServlet {
 					}
 				}
 			}
-			request.setAttribute("listaMaterias", listaTareas);
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/materia/administrar.jsp").forward(request,
+			request.setAttribute("listaTareas", listaTareas);
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/tarea/administrar.jsp").forward(request,
 					response);
 		}
 	}

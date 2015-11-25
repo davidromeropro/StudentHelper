@@ -30,7 +30,7 @@
 				<hr>
 				<div class="registration">
 					No tienes cuenta?<br>
-						<a class="btn btn-primary" href="${pageContext.request.contextPath}/Usuario/Registrar">
+					<a class="btn btn-primary" href="${pageContext.request.contextPath}/Usuario/Registrar">
 							Crear una cuenta</a>
 				</div>
 

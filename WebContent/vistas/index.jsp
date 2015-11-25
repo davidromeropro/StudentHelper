@@ -41,7 +41,7 @@
       <div class="jumbotron">
         <div class="row">
             <div class="col-sm-12">
-                <h1>Student Helper</h1>
+				<img class="img-responsive" src="${pageContext.request.contextPath}/images/Logo.png"/>
                 <h2>Bienvenido!</h2>
                 <p>Esta herramienta te ayudará a organizar tus horarios, tareas y exámenes en tu vida académica.</p>
             </div>

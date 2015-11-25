@@ -23,15 +23,18 @@
 		getServletConfig().getServletContext().getRequestDispatcher("/vistas/home.jsp").forward(request, response);
 	}
 %>
-              <form class="form-horizontal style-form" method="post">
+              <form class="form-horizontal style-form" method="post" enctype="multipart/form-data">
                   <input type="text" class="form-control" name="nombre" value="<%=usr.getNombre()%>">
                   <br>
                   <input type="text" class="form-control" name="apellido" value="<%=usr.getApellido()%>">
                   <br>
                   <input type="email" class="form-control" name="email" value="<%=usr.getEmail()%>" readonly>
                   <br>
-                  <input type="password" class="form-control" name="password" placeholder="Password">
+                  <input type="password" class="form-control" name="password" value="<%=usr.getPassword()%>" placeholder="Password">
                   <br>
+                  <label for="inputFile">Seleccionar archivo</label> <input
+						type="file" id="inputFile" name="inputFile">
+				  <br>
               <div class="panel-footer">
               <button class="btn btn-primary" type="submit">Guardar</button>
               <a class="btn btn-default" href="${pageContext.request.contextPath}/Usuario/VerPerfil" type="button">Cancelar</a>

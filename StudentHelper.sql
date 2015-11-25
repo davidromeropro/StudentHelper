@@ -4,7 +4,17 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+-- -----------------------------------------------------
+-- Schema StudentHelper
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema StudentHelper
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `StudentHelper` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+-- -----------------------------------------------------
+-- Schema webDBPrueba
+-- -----------------------------------------------------
 USE `StudentHelper` ;
 
 -- -----------------------------------------------------
@@ -17,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `StudentHelper`.`USUARIO` (
   `APELLIDOUSR` VARCHAR(45) NULL COMMENT '',
   `ESTADOUSR` TINYINT(1) NULL COMMENT '',
   `ADMINISTRADORUSR` TINYINT(1) NULL COMMENT '',
+  `FOTOPERFILUSR` VARCHAR(300) NULL COMMENT '',
   PRIMARY KEY (`EMAILUSR`)  COMMENT '')
 ENGINE = InnoDB;
 
@@ -66,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `StudentHelper`.`TAREA` (
   `IDTAREA` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `TITULOTAREA` VARCHAR(40) NULL COMMENT '',
   `DESCRIPCIONTAREA` VARCHAR(100) NULL COMMENT '',
-  `FECHAENTREGATAREA` DATE NULL COMMENT '',
+  `FECHAENTREGATAREA` VARCHAR(12) NULL COMMENT '',
   `MATERIA_IDMATERIA` INT NOT NULL COMMENT '',
   PRIMARY KEY (`IDTAREA`)  COMMENT '',
   INDEX `fk_TAREA_MATERIA1_idx` (`MATERIA_IDMATERIA` ASC)  COMMENT '',
@@ -83,7 +94,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `StudentHelper`.`EXAMEN` (
   `IDEXAMEN` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `FECHAEXAMEN` DATE NULL COMMENT '',
+  `FECHAEXAMEN` VARCHAR(12) NULL COMMENT '',
   `TEMAEXAMEN` VARCHAR(45) NULL COMMENT '',
   `MATERIA_IDMATERIA` INT NOT NULL COMMENT '',
   PRIMARY KEY (`IDEXAMEN`)  COMMENT '',
@@ -94,3 +105,8 @@ CREATE TABLE IF NOT EXISTS `StudentHelper`.`EXAMEN` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -4,18 +4,37 @@
 	import="java.util.*, ec.edu.epn.modelo.vo.*, ec.edu.epn.modelo.servicio.*"%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <h2 align="center">Mi Perfil</h2>
-<section class="container" align="center">
+<section class="container">
+	<%  UsuarioVO usrLogeado = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");
+		UsuarioVO usr = new UsuarioVO();
+		String emailInfo = usrLogeado.getEmail();
+		ServicioUsuario su = new ServicioUsuario();
+		usr = su.buscarUsuario(emailInfo);
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/home.jsp").forward(request,
+					response);
+		}
+	%>
+	
+	<div
+		style="display: flex; justify-content: center; align-items: center;">
+		<div class="col-sm-3" align="center">
+			<div class="profile-avatar">
+				<img class="img-thumbnail" src="<%=usr.getFotoPerfil()%>"
+					alt="profile picture" />
+			</div>
+
+		</div>
+	</div>
+	<br>
 	<div class="row">
 		<div class="col-md-3 "></div>
 		<div class="col-sm-6" align="center">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<p>
 					<h4>Datos Personales</h4>
-					</p>
 				</div>
 				<div class="panel-body">
-					<% UsuarioVO usr = (UsuarioVO) request.getSession().getAttribute("usuarioLogeado");%>
 					<table class="table">
 
 						<tr>
@@ -47,7 +66,6 @@
 					</form>
 				</div>
 			</div>
-
 		</div>
 	</div>
 

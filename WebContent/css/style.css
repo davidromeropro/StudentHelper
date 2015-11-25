@@ -94,15 +94,25 @@
           background-color: #afe0ef;
           color: #002651;
         }
-        
-        /*a link*/
-        a {
-            color: white;
+
+        .profile-avatar {
+            padding: 20px 20px;
+            float: left;
         }
-        a:hover {
-            color: #f2f2f2;
+
+        .profile-image {
+           border-top-left-radius: 100px;
+           border-top-right-radius: 100px;
         }
-        a:visited {
-            color: white;
-            text-decoration: none;
+
+
+        .profile-avatar img {
+            border-radius: 50%;
+            border: 2px solid #e7e7e2;
+        }
+
+
+        #anioMesForm.selectContainer .form-control-feedback,
+        #anioMesForm.inputGroupContainer .form-control-feedback {
+            right: -15px;
         }

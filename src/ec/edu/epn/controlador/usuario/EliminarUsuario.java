@@ -46,7 +46,7 @@ public class EliminarUsuario extends HttpServlet {
 		try {
 			ServicioUsuario sc = new ServicioUsuario();
 			String email = (String) request.getParameter("emailEliminar");
-			UsuarioVO usrEliminar = sc.buscarUsuarioByEmail(email);
+			UsuarioVO usrEliminar = sc.buscarUsuario(email);
 			sc.eliminarUsuario(usrEliminar);
 		} catch (Exception e) {
 			e.printStackTrace();
